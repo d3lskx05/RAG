@@ -12,18 +12,7 @@ import os
 
 @functools.lru_cache(maxsize=1)
 def get_model():
-    model_path = "fine_tuned_model"
-    model_zip  = "fine_tuned_model.zip"
-    file_id    = "1RR15OMLj9vfSrVa1HN-dRU-4LbkdbRRf"  # при необходимости замените
-
-    if not os.path.exists(model_path):
-        import gdown
-        import zipfile
-        gdown.download(f"https://drive.google.com/uc?id={file_id}", model_zip, quiet=False)
-        with zipfile.ZipFile(model_zip, 'r') as zf:
-            zf.extractall(model_path)
-
-    return SentenceTransformer(model_path)
+    return SentenceTransformer('USER-bge-m3')
 
 @functools.lru_cache(maxsize=1)
 def get_morph():
@@ -189,4 +178,5 @@ def filter_by_topics(results, selected_topics):
             phrase, topics, comment = item
             if set(topics) & set(selected_topics):
                 filtered.append((phrase, topics, comment))
+
     return filtered
