@@ -12,7 +12,7 @@ import os
 
 @functools.lru_cache(maxsize=1)
 def get_model():
-    return SentenceTransformer('deepvk/USER-bge-m3')
+    return SentenceTransformer('BAAI/bge-m3')
 
 @functools.lru_cache(maxsize=1)
 def get_morph():
@@ -180,4 +180,5 @@ def filter_by_topics(results, selected_topics):
                 filtered.append((phrase, topics, comment))
 
     return filtered
+
 
